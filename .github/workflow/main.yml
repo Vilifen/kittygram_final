@@ -1,0 +1,22 @@
+name: Kittygram CI
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Build backend
+        run: docker build ./backend
+
+      - name: Build frontend
+        run: docker build ./frontend
+
+      - name: Build nginx
+        run: docker build ./nginx
